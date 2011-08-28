@@ -10,4 +10,6 @@ Original implementation of the `amb` operator by Eric Kidd (http://www.randomhac
 
 Further improvements by Jean-Denis Vauguet <jd@vauguet.fr> for the Amb gem.
 
+Otherwise stated in this file, code is made available under the MIT license (see MIT-LICENSE file).
+
 Thank you very much for your work.
