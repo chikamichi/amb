@@ -1,3 +1,5 @@
+require './lib/amb/version'
+
 Gem::Specification.new do |s|
   s.name = "amb"
   s.author = "Jean-Denis Vauguet <jd@vauguet.fr>"
