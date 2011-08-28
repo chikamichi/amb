@@ -77,7 +77,7 @@ module Amb
     base.extend(ClassMethods)
   end
 
-  # Memoize and return the alternatives continuations.
+  # Memoize and return the alternatives associated continuations.
   #
   # @return [Array<Proc, Continuation>]
   #
