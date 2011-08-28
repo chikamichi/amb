@@ -20,6 +20,8 @@ require File.expand_path("../_shared.rb",  __FILE__)
 
 # Some helper methods for boolean logic.
 class Object
+  # Execute the provided boolean statement if `self` evaluates to true.
+  #
   def implies(bool)
     self ? bool : true
   end
@@ -31,7 +33,7 @@ end
 
 # Find all the solutions to the constraints set.
 Ambiguous.solve_all do |amb|
-  count = 0
+  count = 0 # keep track of solving tries.
 
   # Kibi's parents are either male or female, but must be distinct.
   parent1 = amb.choose(:male, :female)
@@ -54,30 +56,29 @@ Ambiguous.solve_all do |amb|
   # Using the block form just for the sake of readability.
   amb.assert { (parent1 == :male).implies(kibi_said == :male) }
 
-  # If the first parent is female, then there are no futher deductions
-  # to make.  Their statement could either be true or false.
+  # If however the first parent is female, then there are no futher
+  # deductions to be made on the first parent: their statement could
+  # either be true or false. Moving on the second parent.
+
   # If the second parent is male, then both its statements must be true.
   amb.assert { (parent2 == :male).implies(kibi == :female) }
   amb.assert { (parent2 == :male).implies(kibi_lied) }
 
-  # If the second parent is female, then the condition is more
-  # complex. In this case, one or the other of the parent 2's
+  # If however the second parent is female, then the condition is more
+  # complex. In this case, one or the other of the second parent's
   # statements are false, but not both are false. Let's introduce
-  # some variables for statements 1 and 2 just to make this a bit
+  # some variables for statements 1 and 2, just to make this a bit
   # clearer.
   s1 = kibi_lied
   s2 = (kibi == :female)
-
   amb.assert { (parent2 == :female).implies((s1 && !s2).xor(!s1 && s2)) }
 
   # Now just print out the solution.
   count += 1
-  puts "Solution #{count}"
+  puts "Solution ##{count}"
+  puts "-----------"
   puts "The first parent is #{parent1}."
   puts "The second parent is #{parent2}."
   puts "Kibi is #{kibi}."
-  puts "Kibi said #{kibi_said} and #{kibi_lied ? 'lied' : 'told the truth'}."
-  puts
-
-  amb.failure # Force a search for another solution (actually there is none).
+  puts "Kibi said #{kibi_said}, hence #{kibi_lied ? 'lied' : 'told the truth'}."
 end

@@ -141,7 +141,7 @@ module Amb
     # Class convenience method to search for the first solution to the
     # constraints.
     #
-    def solve(failure_message = "No Solution")
+    def solve(failure_message = "No solution.")
       amb = self.new
       yield(amb)
     rescue Amb::ExhaustedError => ex
@@ -151,11 +151,12 @@ module Amb
     # Class convenience method to search for all the solutions to the
     # constraints.
     #
-    def solve_all(failure_message = "No More Solutions")
+    def solve_all(failure_message = "No more solutions.")
       amb = self.new
       yield(amb)
       amb.failure
     rescue Amb::ExhaustedError => ex
+      puts
       amb.report(failure_message)
     end
   end
