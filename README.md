@@ -64,7 +64,7 @@ This illustrates the incremental, backtracking pattern leading to the first vali
 
     gem install amb
 
-## Usage
+## Step by step
 
 Here's a raw use-case, presenting the required *steps*. For concrete examples, see the `examples/` directory.
 
@@ -82,15 +82,28 @@ end
 amb = Ambiguous.new
 ```
 
-Then define your alternatives using `#choose` (aliased as `#choices` or `#alternatives`). It may take arbitrary code (values, proc…).
+Then, define your alternatives using `#choose` (aliased as `#choices` or `#alternatives`). It may take arbitrary code (values, proc…). Don't forget to assign it to a variable, otherwise it is just useless alternatives. Most of the time, several alternatives set will be defined.
 
 ``` ruby
-amb.choose()
+x = amb.choose(1, 2, lambda { some code})
+y = amb.choose(:some, :more, :alternatives)
 ```
+
+Then, state at least one constraint which, hopefully, references your alternatives. If more than one constraint is expressed, all of them will be considered in the problem solving.
+
+``` ruby
+amb.assert(x != y)
+amb.assert heavy_logical_computation_on(x, y)
+```
+
+And so on. Once again, for real use-cases, see the `examples/` directory.
 
 ## TODO
 
+* memoization/reset
+* a different selection algo?
+
 ## See also
 
-* the `doc/` and `examples/` directories.
+* `doc/` and `examples/` directories.
 * Continuations and fibers concepts.

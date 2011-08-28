@@ -98,6 +98,8 @@ module Amb
     end
     failure
   end
+  alias :choices :choose
+  alias :alternatives :choose
 
   # Unconditional failure of a constraint, causing the last choice to be
   # retried. This is equivalent to saying `assert(false)`.
