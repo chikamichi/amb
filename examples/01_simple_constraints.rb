@@ -8,7 +8,7 @@ end
 @amb = Ambiguous.new
 x = @amb.choose(1,2,3,4)
 @amb.assert((x % 2) == 0)
-puts x if $DEBUG # 2
+puts x # 2
 
 # Constraint with no valid execution path => raise
 @amb = Ambiguous.new
@@ -21,6 +21,6 @@ rescue Amb::ExhaustedError; end
 @amb = Ambiguous.new
 z = @amb.choose(1,2,3,4)
 @amb.assert(3,1) { |i,j| (i*j*z) % 2 == 0 }
-puts z if $DEBUG # 2
+puts z # 2
 
 puts "OK."

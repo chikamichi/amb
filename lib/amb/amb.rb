@@ -102,6 +102,9 @@ module Amb
   # Unconditional failure of a constraint, causing the last choice to be
   # retried. This is equivalent to saying `assert(false)`.
   #
+  # Use to force a search for another solution (see examples).
+  # @TODO it'd be better not to have to
+  #
   def failure
     back_amb.pop.call
   end
@@ -136,7 +139,7 @@ module Amb
     # Class convenience method to search for the first solution to the
     # constraints.
     #
-    def solve(failure_message="No Solution")
+    def solve(failure_message = "No Solution")
       amb = self.new
       yield(amb)
     rescue Amb::ExhaustedError => ex
@@ -146,7 +149,7 @@ module Amb
     # Class convenience method to search for all the solutions to the
     # constraints.
     #
-    def solve_all(failure_message="No More Solutions")
+    def solve_all(failure_message = "No More Solutions")
       amb = self.new
       yield(amb)
       amb.failure

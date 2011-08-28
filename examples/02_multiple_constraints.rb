@@ -6,6 +6,7 @@ x = @amb.choose(1,2,3,4)
 y = @amb.choose(1,2,3,4)
 @amb.assert x + y == 5
 @amb.assert x - y == 1
+puts "x = #{x}, y = #{y}"
 
 # no valid solution exists
 @amb = Ambiguous.new
