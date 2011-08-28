@@ -28,14 +28,42 @@ class TestAmb < MiniTest::Unit::TestCase
   end
 
   def test_simple_constraint_as_arg
-    x = @amb.choose(1,2,3,4)
-    @amb.assert((x % 2) == 0)
-    assert x == 2, "#{x} must equal 2 (first-match)"
+    @x = @amb.choose(1,2,3,4)
+    @amb.assert((@x % 2) == 0)
+    assert @x == 2, "#{@x} must equal 2 (first-match)"
   end
 
   def test_simple_constraint_as_block
+    @x = @amb.choose(1,2,3,4)
+    @amb.assert { @x % 2 == 0 }
+    assert @x == 2, "#{@x} must equal 2 (first-match)"
+  end
+
+  def test_simple_constraint_as_block_with_parameters
+    @x = @amb.choose(1,2,3,4)
+    @amb.assert(4) { |i| (i * @x) % 2 == 0 }
+    assert @x == 1, "#{@x} must equal 1 (first-match)"
+  end
+
+  def test_multiple_alternatives
     x = @amb.choose(1,2,3,4)
-    @amb.assert { x % 2 == 0 }
-    assert x == 2, "#{x} must equal 2 (first-match)"
+    y = @amb.choose(1,2,3,4)
+
+    @amb.assert x + y == 5
+    @amb.assert x - y == 1
+
+    assert x == 3, "#{x} must equal 3"
+    assert y == 2, "#{y} must equal 2"
+  end
+
+  def test_amb_tree_exhausted
+    assert_raises(Amb::ExhaustedError) do
+      x = @amb.choose(1,2,3,4)
+      y = @amb.choose(1,2,3,4)
+
+      @amb.assert x + y == 5
+      @amb.assert x - y == 1
+      @amb.assert x == 2
+    end
   end
 end
