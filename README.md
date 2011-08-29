@@ -102,9 +102,11 @@ And so on. Once again, for real use-cases, see the `examples/` directory.
 
 ## TODO
 
-* `choose` depending on a previous `choose`
-* memoization/reset
-* a different selection algo?
+* more examples!
+* more specs!
+* spec out `choose` depending on a previous `choose`
+* memoization/reset?
+* a different selection algo? (BFS, smarter one…)
 
 ## See also
 
