@@ -108,6 +108,10 @@ module Amb
   # @TODO it'd be better not to have to
   #
   def failure
+    if $DEBUG
+      @__num_of_tries ||= 1
+      @__num_of_tries += 1
+    end
     back_amb.pop.call
   end
 
@@ -137,6 +141,10 @@ module Amb
     puts failure_message
   end
 
+  def branches_count
+    @__num_of_tries
+  end
+
   module ClassMethods
     # Class convenience method to search for the first solution to the
     # constraints.
@@ -145,6 +153,8 @@ module Amb
       amb = self.new
       yield(amb)
     rescue Amb::ExhaustedError => ex
+      puts
+      puts "#{amb.branches_count} branches explored." if $DEBUG
       amb.report(failure_message)
     end
 
@@ -157,6 +167,7 @@ module Amb
       amb.failure
     rescue Amb::ExhaustedError => ex
       puts
+      puts "#{amb.branches_count} branches explored." if $DEBUG
       amb.report(failure_message)
     end
   end

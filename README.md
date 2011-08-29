@@ -19,7 +19,7 @@ Typically, the programmer would specify a limited number of alternatives (eg. di
 
 To discover which alternatives groups are valid, a check/discard/switch strategy must be enforced by the program. Most often it will make use of a ambiguous operator, `amb()` which implements this strategy. [Quoting Dorai Sitaram](http://www.ccs.neu.edu/home/dorai/t-y-scheme/t-y-scheme-Z-H-16.html#node_chap_14), "`amb` takes zero or more expressions, and makes a nondeterministic (or "ambiguous") choice among them, preferring those choices that cause the program to converge meaningfully". The most basic version of `amb` would be `amb(x,y)`, which returns, *in an unpredictible way*, either x or y when both are defined; if only one is defined, whichever is defined; and terminate the program if none is defined. Using some recursivity, `amb()` may be used to define arbitrary, complex ambiguous functions. It is quite difficult to implement a good `amb()` operator matching that formal definition though (for unpredictability is not what computers enjoys doing). A simpler (yet functional) version has the operator return its first defined argument, then pass over the next defined one in case of a dead-end, in a depth-first selection algorithm. It *is* dumb yet it works as expected.
 
-Thus the most common strategy used for implementing `amb()`'s logic (check/discard) is chronological backtracking. It almost always relies on some sort of continuations (`call/cc`) and a search algorithm (say, depth-first). The algorithm may be tweaked into a smarter backjumping for more efficiency, depending on the problem at stake. Another strategy is reinforcement learning (aka. constraint learning), as is used in some AI systems. This library implements simple backtracking only though.
+Thus the most common strategy used for implementing `amb()`'s logic (check/discard) is chronological backtracking. It is kind of a brute-force, linear approach, which always relies on some sort of continuations (`call/cc`). The algorithm may be tweaked into a smarter backjumping for more efficiency, depending on the problem at stake. Another strategy is reinforcement learning (aka. constraint learning), as is used in some AI systems. This library implements simple backtracking only though.
 
 More details on all of this under the `doc/` folder (*pending*).
 
@@ -58,7 +58,9 @@ examining x = 3, y = 1
 examining x = 3, y = 2
 solution: x = 3, y = 2
 ```
-This illustrates the incremental, backtracking pattern leading to the first valid solution. Many more examples under the `examples/` directory.
+This illustrates the incremental, backtracking pattern leading to the first valid solution.
+
+Many more examples under the `examples/` directory. You may run them with the `-d` flag to output information about the solving process.
 
 ## Installation
 
