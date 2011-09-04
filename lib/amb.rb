@@ -1,2 +1,2 @@
-require './lib/amb/amb'
-require './lib/amb/amb_operator'
+require 'amb/amb'
+require 'amb/amb_operator'
