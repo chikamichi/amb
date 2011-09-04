@@ -105,8 +105,10 @@ And so on. Once again, for real use-cases, see the `examples/` directory.
 * more examples!
 * more specs!
 * spec out `choose` depending on a previous `choose`
+* implements a version of amb matching the original definition (returns one of its argument at random) => keep track of backtracking paths
+* implements a trampoline version (continuation-passing style)
 * memoization/reset?
-* a different selection algo? (BFS, smarter one…)
+* a different selection algo? (BFS, smarter one)
 
 ## See also
 
