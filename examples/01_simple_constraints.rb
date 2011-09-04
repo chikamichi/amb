@@ -1,3 +1,4 @@
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require File.expand_path("../_shared.rb",  __FILE__)
 
 class Ambiguous

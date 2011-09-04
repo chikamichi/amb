@@ -16,6 +16,7 @@
 #
 # Solve for the sex of the parents and Kibi.
 
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require File.expand_path("../_shared.rb",  __FILE__)
 
 # Some helper methods for boolean logic.

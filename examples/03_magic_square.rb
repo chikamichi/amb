@@ -9,6 +9,7 @@
 # See the following for details about Amb:
 # http://www.ccs.neu.edu/home/dorai/t-y-scheme/t-y-scheme-Z-H-16.html#node_chap_14
 
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require File.expand_path("../_shared.rb",  __FILE__)
 
 # A Magic Square class, mostly to get convenient column/row/diagonal

@@ -32,6 +32,7 @@
 # The sheriff knows that the murderer is among these three people. Who should
 # the sheriff arrest for killing C?
 
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require File.expand_path("../_shared.rb",  __FILE__)
 
 # Some helper methods for boolean logic.
