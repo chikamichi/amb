@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require File.expand_path("../../lib/amb.rb",  __FILE__)
 
 class Ambiguous
