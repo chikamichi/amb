@@ -1,13 +1,22 @@
-This gem is a compilation of several implementations of the **ambiguous function/operator** pattern, useful for constraint programming. Each implementation comes with its own copyright notice and authors, so be sure to check the CREDITS file!
+This gem is a compilation of several implementations of the
+**ambiguous function/operator** pattern, a computation tool useful for
+constraint programming and constraint satisfaction problems solving.
 
-Ever wanted to:
+This little gem currently focus on implementing backtracking, which is
+"a general algorithm for finding all (or some) solutions to some
+computational problem, that incrementally builds candidates to the
+solutions, and abandons each partial candidate c ("backtracks") as
+soon as it determines that c cannot possibly be completed to a valid
+solution." ([:en](http://en.wikipedia.org/wiki/Backtracking))
 
-* write straightforward parsers?
-* solve crosswords and sudokus or the n-queens problem?
+Need some examples? Have you ever wanted to:
+
+* write a straightforward parser?
+* solve crosswords, sudokus or the n-queens problem?
 * design an equation-solver or a modelizer?
 * understand how logic programming languages (Prolog…) work?
 
-Them amb may be of interest to you.
+Them amb may be of some interest to you.
 
 ## Synopsis
 
