@@ -2,7 +2,7 @@ This gem is a compilation of several implementations of the
 **ambiguous function/operator** pattern, a computation tool useful for
 constraint programming and constraint satisfaction problems solving.
 
-This little gem currently focus on implementing backtracking, which is
+This little gem currently focuses on implementing backtracking, which is
 "a general algorithm for finding all (or some) solutions to some
 computational problem, that incrementally builds candidates to the
 solutions, and abandons each partial candidate c ("backtracks") as
